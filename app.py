@@ -57,13 +57,7 @@ def login():
 
     return render_template('login.html')
 
-@app.route('/dashboard')
-def dashboard():
-    if 'user' in session:
-        return render_template('dashboard.html', username=session['user'])
-    else:
-        flash('Please login to access dashboard.', 'warning')
-        return redirect(url_for('login'))
+
 
 @app.route('/logout')
 def logout():
@@ -113,12 +107,6 @@ def dashboard():
     else:
         flash('Please log in first.', 'warning')
         return redirect(url_for('login'))
-
-@app.route('/logout')
-def logout():
-    session.pop('user', None)
-    flash('Logged out successfully.', 'success')
-    return redirect(url_for('login'))
 
 
 
